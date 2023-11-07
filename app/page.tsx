@@ -34,8 +34,6 @@ export default function Page() {
         console.error('Error fetching coffee chats aided count:', error);
       });
   }, []);
-  
-  
 
   const scrollToBios = () => {
     if (bioRef.current !== null) {
@@ -58,11 +56,12 @@ export default function Page() {
     e.preventDefault();
     setBio(input);
     handleSubmit(e);
-    
+    setCoffeeChatsAided(coffeeChatsAided + 1);
   };
 
   const lastMessage = messages[messages.length - 1];
-  const generatedBios = lastMessage?.role === "assistant" ? lastMessage.content : null;
+  const generatedBios =
+    lastMessage?.role === 'assistant' ? lastMessage.content : null;
 
   return (
     <div className="flex max-w-5xl mx-auto flex-col items-center justify-center py-2 min-h-screen">
@@ -70,7 +69,9 @@ export default function Page() {
         <h1 className="sm:text-6xl text-4xl max-w-[708px] font-bold text-slate-900">
           Generate questions for your Coffee Chats
         </h1>
-        <p className="text-slate-500 mt-5">{coffeeChatsAided} coffee chats aided so far.</p>
+        <p className="text-slate-500 mt-5">
+          {coffeeChatsAided} coffee chats aided so far.
+        </p>
         <form className="max-w-xl w-full" onSubmit={onSubmit}>
           <div className="flex mt-10 items-center space-x-3">
             <Image

@@ -2,11 +2,11 @@ import { Configuration, OpenAIApi } from 'openai-edge';
 import { OpenAIStream, StreamingTextResponse } from 'ai';
 import { kv } from '@vercel/kv';
 
-
 // Create an OpenAI API client (that's edge friendly!)
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+console.log('key:', config.apiKey);
 const openai = new OpenAIApi(config);
 
 // Set the runtime to edge for best performance
@@ -15,7 +15,7 @@ export const runtime = 'edge';
 export async function POST(req: Request) {
   const { vibe, bio } = await req.json();
   const getme = await kv.get('coffeecounter');
-  console.log('We got:',getme); // Log the fetched data
+  console.log('We got:', getme); // Log the fetched data
   await kv.incr('coffeecounter');
   const user = await kv.get('coffeecounter');
   console.log('Incremented to :', user); // Log the fetched data

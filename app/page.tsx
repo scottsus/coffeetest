@@ -14,7 +14,11 @@ export default function Page() {
   const [coffeeChatsAided, setCoffeeChatsAided] = useState(0);
 
   useEffect(() => {
-    fetch('/counter-coffee')
+    fetch('/counter-coffee', {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate', // Prevents caching
+      },
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

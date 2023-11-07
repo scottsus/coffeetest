@@ -17,6 +17,8 @@ export default function Page() {
     fetch('/counter-coffee', {
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate', // Prevents caching
+        Pragma: 'no-cache', // For compatibility with HTTP/1.0
+        Expires: '0', // Old cache
       },
     })
       .then((response) => {

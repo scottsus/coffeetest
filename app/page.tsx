@@ -7,6 +7,8 @@ import DropDown, { VibeType } from '../components/DropDown';
 import Footer from '../components/Footer';
 import { useChat } from 'ai/react';
 
+export const fetchCache = 'force-no-store';
+
 export default function Page() {
   const [bio, setBio] = useState('');
   const [vibe, setVibe] = useState<VibeType>('Professional');

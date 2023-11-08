@@ -6,7 +6,6 @@ import { kv } from '@vercel/kv';
 const config = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
-console.log('key:', config.apiKey);
 const openai = new OpenAIApi(config);
 
 // Set the runtime to edge for best performance

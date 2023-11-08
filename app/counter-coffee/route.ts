@@ -1,6 +1,8 @@
 import { kv } from '@vercel/kv';
 import { NextResponse } from 'next/server';
 
+export const fetchCache = 'force-no-store';
+
 export async function GET() {
   const coffeeChatsAided = await kv.get('coffeecounter');
   console.log('blah:', coffeeChatsAided);
